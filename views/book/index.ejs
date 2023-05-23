@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title><%= docTitle %></title>
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/book.css" />
+  </head>
+
+  <body>
+    <header class="main-header">
+      <nav class="main-header__nav">
+        <ul class="main-header__item-list">
+          <li class="main-header__item">
+            <a href="/books?page=1&limit=<%= limit %>">Books</a>
+          </li>
+          <li class="main-header__item">
+            <a href="/books/add-book">Add New Book</a>
+          </li>
+          <li class="main-header__item"><a href="/users/logout">Log out</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <h1 class="book__price"><a href="/">BOOKINDOM</a></h1>
+      <% if (prods.length > 0) { %>
+      <div class="grid">
+        <% for (let book of prods) { %>
+        <article class="card book-item">
+          <header class="card__header">
+            <h1 class="book__title"><%= book.Title %></h1>
+          </header>
+          <div class="card__image">
+            <img src="<%=book.imageURL%>" alt="<%= book.Title %>" />
+          </div>
+          <div class="card__content">
+            <h2 class="book__price"><%=book.Author %></h2>
+          </div>
+          <div class="card__actions">
+            <a href="/books/edit-book/<%= book._id%>?edit='true'" class="btn"
+              >Edit</a
+            >
+            <a href="/books/<%= book._id %>" class="btn">Detail</a>
+            <form action="/books/delete-book" method="post">
+              <input type="hidden" name="bookId" value="<%= book._id %>" />
+              <button class="btn" type="submit">Delete</button>
+            </form>
+          </div>
+        </article>
+        <% } %>
+      </div>
+      <% } else { %>
+      <h1>No book found!</h1>
+      <% } %>
+
+      <a href="/books?page=<%= prevPage() %>&limit=<%= limit %>">Previous Page</a>
+      <a href="/books?page=<%= nextPage() %>&limit=<%= limit %>">Next Page</a>
+
+    </main>
+  </body>
+</html>

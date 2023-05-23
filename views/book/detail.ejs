@@ -1,0 +1,31 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/book.css">
+</head>
+
+<body>
+    <header class="main-header">
+      <nav class="main-header__nav">
+       <ul class="main-header__item-list">
+        <li class="main-header__item">
+          <a href="/books">Books</a>
+        </li>
+        <li class="main-header__item">
+          <a href="/books/add-book">Add New Book</a>
+        </li>
+       </ul>
+      </nav>
+    </header>
+    <main class="centered">
+        <h1><%= book.Title %></h1>
+        <div>
+            <img src="<%= book.image %>" alt="<%= book.Title %>">
+        </div>
+        <h2>A book by <%= book.Author %></h2>
+        <p><%= book.Description %></p>
+        <h3>Last published on <%= book.datePublished %> </h3>
+        <h3>Genre: <%= book.Genre %> </h3>
+        <h3>Published by: <%= book.Publisher %> </h3>
+        <h3>Book size <%= book.pageCount %> </h3>
+    </main>
+
+<%- include('../includes/end.ejs') %>

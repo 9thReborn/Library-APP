@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%=docTitle%></title>
+    <link rel="stylesheet" href="/css/signUp.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-5">
+          <div class="card">
+            <h2 class="card-title text-center">Log in</h2>
+            <div class="card-body py-md-4">
+              <form action="/users/login" method="post">
+                <div class="form-group">
+                  <input
+                    name="email"
+                    type="email"
+                    class="form-control"
+                    id="email"
+                    placeholder="Email"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <input
+                    name="password"
+                    type="password"
+                    class="form-control"
+                    id="password"
+                    placeholder="Password"
+                  />
+                </div>
+
+                <div
+                  class="d-flex flex-row align-items-center justify-content-between"
+                >
+                  <a href="/users">Register</a>
+                  <button class="btn btn-primary">Login</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <script>
+      const form = document.querySelector("form");
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        
+        const email = form.email.value;
+        const password = form.password.value;
+
+        try {
+          const res = await fetch("/users", {
+            method: "POST",
+            body: JSON.stringify({  email, password }),
+            headers: { "Content-Type": "application/json" },
+          });
+          const data = await res.json();
+          if (data.user) {
+            location.assign("/");
+          }else {
+            alert("Invalid login")
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      });
+    </script>
+    
+  </body>
+</html>

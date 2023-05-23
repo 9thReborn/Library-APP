@@ -1,0 +1,30 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= docTitle %></title>
+    <link rel="stylesheet" href="/css/dashboard.css" />
+  </head>
+  <body>
+    <nav>
+      <h1><a href="/">BOOKINDOM</a></h1>
+      <ul>
+        <!-- <li><a href="/users/logout">Log out</a></li> -->
+        <li><a href="/users/login">Log in</a></li>
+        <li><a href="/users" class="btn">Sign up</a></li>
+      </ul>
+    </nav>
+
+    <header>
+      <div class="smoothie">
+        <img src="/book.jpeg" alt="" />
+      </div>
+      <div class="headings">
+        <h3>Your Future Awaits</h3>
+        <a href="/books?page=1&limit=<%= limit %>" class="btn">View Books</a>
+      </div>
+    </header>
+
+    <footer>Copyright &copy; Silas Adinoyi's Foundation</footer>
+  </body>
+</html>
