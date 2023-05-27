@@ -1,16 +1,18 @@
 {
+  "homepage": "http://9thReborn.github.io/Library-APP",
   "name": "week-6-task",
   "version": "0.0.0",
   "private": true,
   "scripts": {
     "start": "nodemon ./bin/www",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "compile": "tsc -w",
     "test": "jest dist/utils/testUtils/test.js --runInBand --detectOpenHandles"
   },
   "jest": {
     "testEnvironment": "node"
   },
-  
   "dependencies": {
     "bcrypt": "^5.1.0",
     "config": "^3.3.9",
@@ -43,7 +45,6 @@
   "bugs": {
     "url": "https://github.com/decadevs/week-6-node-task-pod-d-9thReborn/issues"
   },
-  "homepage": "https://github.com/decadevs/week-6-node-task-pod-d-9thReborn#readme",
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
     "@types/config": "^3.3.0",
@@ -53,6 +54,7 @@
     "@types/http-errors": "^2.0.1",
     "@types/jsonwebtoken": "^9.0.1",
     "@types/morgan": "^1.9.4",
-    "@types/node": "^18.15.10"
+    "@types/node": "^18.15.10",
+    "gh-pages": "^5.0.0"
   }
 }
